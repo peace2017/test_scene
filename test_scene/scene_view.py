@@ -10,8 +10,7 @@ LOG = logging.getLogger(__name__)
 class TestScene(QtWidgets.QGraphicsView):
     def __init__(self, *args, **kwargs):
         super(TestScene, self).__init__(*args, **kwargs)
-        self.setSceneRect(
-            -0, -0, 1000, 1000)
+
         self.kadabra = vehicle_scene.VehicleScene()
         self.setScene(self.kadabra)
         self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
@@ -20,8 +19,6 @@ class TestScene(QtWidgets.QGraphicsView):
         self.setResizeAnchor(
             QtWidgets.QGraphicsView.AnchorViewCenter)
 
-        self.kadabra.get_center_scene(self.sceneRect())
-
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Left:
             self.kadabra.move_left()
@@ -29,10 +26,8 @@ class TestScene(QtWidgets.QGraphicsView):
             self.kadabra.move_right()
         elif event.key() == QtCore.Qt.Key_Up:
             self.kadabra.move_up()
-            # vel++
         elif event.key() == QtCore.Qt.Key_Down:
             self.kadabra.move_down()
-            # vel--
         elif event.key() == QtCore.Qt.Key_Space:
             pass
 
